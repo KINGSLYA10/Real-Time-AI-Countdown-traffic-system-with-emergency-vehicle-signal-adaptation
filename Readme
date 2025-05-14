@@ -1,0 +1,92 @@
+# 🚦 Real-Time AI Countdown Traffic System with Emergency Vehicle Signal Adaptation
+
+This project presents an intelligent traffic signal system that dynamically predicts traffic signal countdowns using AI and prioritizes emergency vehicles using real-time sound detection.
+
+## 💡 Overview
+
+Traditional traffic systems operate on static timers, often causing delays and congestion. Our system uses:
+
+- 🔍 **YOLO-based object detection** to detect and count vehicles from video feeds.
+- 📉 **Countdown prediction algorithm** based on vehicle density and estimated crossing time.
+- 🚨 **Sound sensor detection** to identify emergency sirens (e.g., ambulance, fire truck).
+- 💡 **ESP32-CAM microcontroller** with TM1637 4-digit display to show countdowns and control hardware outputs.
+- 🎇 **Signal adaptation** for emergency vehicles – when a siren is detected, the system ensures their path is prioritized.
+
+## 🧠 Features
+
+- ✅ Real-time vehicle detection using pre-recorded video.
+- ✅ Smart countdown prediction based on traffic load.
+- ✅ Emergency vehicle sound detection using LM393/KY-038 sensor.
+- ✅ ESP32-based LED signal control and countdown display.
+- ✅ Automatic lane prioritization logic based on sound detection.
+
+## 📂 Project Structure
+
+├── YOLO_Model/ # YOLOv3 weights and config files
+├── Arduino_Code/ # ESP32 Arduino sketch
+├── videos/ # Demo traffic videos for different lanes
+├── traffic_ai.py # Python script for video processing and prediction
+├── README.md # This file
+
+
+## ⚙️ Requirements
+
+### Python:
+- Python 3.x
+- OpenCV
+- NumPy
+- pySerial
+
+Install dependencies using:
+
+```bash
+pip install opencv-python numpy pyserial
+
+Arduino:
+ESP32-CAM board
+TM1637 4-digit display
+Sound sensor (LM393/KY-038)
+
+Optional: LEDs for signal indication
+
+🛠️ Setup
+🔌 Connect ESP32-CAM with FTDI programmer.
+
+🧠 Upload the Arduino sketch from Arduino_Code/ using PlatformIO or Arduino IDE.
+
+🧪 Run traffic_ai.py, which:
+
+Detects vehicles.
+
+Sends countdowns via serial to ESP32.
+
+Detects sirens and controls flow logic.
+
+📊 Working Principle
+Vehicle count × average vehicle length → traffic length.
+
+Traffic length ÷ average speed → predicted countdown.
+
+If emergency siren detected on Lane 1, system pauses switching and gives Lane 1 green until cleared.
+
+🔁 Demo
+🖼️ See demo videos and real-time LED + display behavior for 3 traffic lanes.
+
+🎯 Future Improvements
+Integrate live camera feed for real deployment.
+
+Use ML regression for more accurate countdown.
+
+Integrate GPS or radio signal for ambulance tracking.
+
+👨‍💻 Contributors
+Kingsly – GitHub | Project Lead, Developer
+
+Dilip Kumar S – Collaborator, Support
+
+📄 License
+MIT License. Feel free to fork and modify for academic or research use.
+
+🚀 Innovation in Motion
+This project contributes to smart city development by reducing traffic delays and improving emergency response time using affordable AI and IoT technology.
+
